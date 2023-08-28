@@ -210,12 +210,24 @@ function addToCart() {
   if (localStorage.getItem("cart") == '' || localStorage.getItem("cart") == null) {
     var arr = [];
     $('#cartNoti').hide();
+    $('#cart').click(function (e) { 
+      e.preventDefault();
+      Toast.fire({
+        icon: "warning",
+        title: "Giỏ hàng hiện rỗng",
+      });
+    });
   } else {
     var cart = localStorage.getItem("cart");
+    console.log(cart);
     var arr = JSON.parse(cart);
     count= arr.length;
     $('#cartNoti').html(Number(count));
     $('#cartNoti').show();
+    $('#cart').click(function (e) { 
+      e.preventDefault();
+      window.location.replace('cart.html');
+    });
   }
   $(".addToCartBtn").click(function (e) {
     e.preventDefault();
@@ -239,6 +251,8 @@ function addToCart() {
     Toast.fire({
       icon: "success",
       title: "Đã thêm hàng thành công",
+    }).then(() => {
+      window.location.reload();
     });
   });
 }
