@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap5.1.css" />
+    <script src="js/bootstrap5.1.js"></script>
+    <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="js/sweetalert2.js"></script>
+  </head>
+  <body>
+    <!----------------------Modal---------------------->
+    <div
+      class="modal fade"
+      id="LoginModal"
+      tabindex="-1"
+      aria-labelledby="LoginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control" id="email" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="subloginBtn">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!----------------------Navbar---------------------->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Thương hiệu
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdown"
+                id="brandsUL"
+              ></ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Loại sản phẩm
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdown"
+                id="cateUL"
+              ></ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bills.html">Hóa đơn</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="loginBtn" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="logoutBtn" href="#">Logout</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <a href="cart.html" style="text-decoration: none;">
+              <img
+                src="img/shopping-cart-svgrepo-com.svg"
+                alt=""
+                class="cartIcon"
+              />
+              <div class="iconCart" id="cartNoti">
+              </div>
+            </a>
+            <input
+              class="form-control me-2 bg-light"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="searchItem"
+            />
+            <!--<button class="btn btn-outline-success bg-light" type="submit">
+              Search
+            </button>-->
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!----------------------Main---------------------->
+    <div class="container1">
+    <img src="img/PC13.png" class="w-100" alt="avatar" />
+    <div class="row align-items-center voucher">
+      <div class="col-4">
+        <img src="img/Bonus banner-16.png" class="w-100" />
+      </div>
+      <div class="col-4">
+        <img src="img/Bonus banner-26.png" class="w-100" />
+      </div>
+      <div class="col-4">
+        <img src="img/Bonus banner-36.png" class="w-100" />
+      </div>
+    </div>
+    <div class="container px-4 mt-3">
+      <div class="row w-100" id="row_products"></div>
+      <div class="row w-100">
+        <button
+          type="button"
+          class="btn btn-primary w-50"
+          style="margin: 10px auto"
+          id="showMoreBtn"
+        >
+          Xem thêm
+        </button>
+    </div>
+    </div>
+    <footer class="footer desktop">
+      <div class="row">
+        <div class="col-md-8 footerName">
+          <span>@Đinh Khiết Ngọc</span>
+        </div>
+        <div class="col-md footerMap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.272927053988!2d106.67567107417293!3d10.790396258937673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e2a448ef3%3A0x787e1a8527eeb64d!2zSOG6u20gU3RvcmUgLSAxNDBBIFRy4bqnbiBRdWFuZyBEaeG7h3UsIFAxNCwgUTM!5e0!3m2!1svi!2s!4v1692928084030!5m2!1svi!2s"
+            width="300"
+            height="200"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </footer>
+    <footer class="footer mobile">
+      <div class="rowFooter mt-4">
+        <div class="col mt-2">
+          <span>@Đinh Khiết Ngọc</span>
+        </div>
+        <div class="col mt-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.272927053988!2d106.67567107417293!3d10.790396258937673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e2a448ef3%3A0x787e1a8527eeb64d!2zSOG6u20gU3RvcmUgLSAxNDBBIFRy4bqnbiBRdWFuZyBEaeG7h3UsIFAxNCwgUTM!5e0!3m2!1svi!2s!4v1692928084030!5m2!1svi!2s"
+            width="300"
+            height="200"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </footer>
+  </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
