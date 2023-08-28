@@ -158,7 +158,8 @@ function getData() {
           searchPrice();
           $('#paginationlist').hide();
         });
-        addToCart()
+        addToCart();
+        searchItem();
       }
     },
   });
@@ -313,6 +314,7 @@ function searchPrice() {
     default:
       break;
   }
+  searchItem()
 }
 //----------------------------------------------
 function addToCart() {
@@ -353,4 +355,139 @@ function addToCart() {
     })
   });
   
+}
+//----------------------------------------------
+function searchItem() {
+  if (!params.has("id")) {
+    window.location.replace("index.html");
+  }
+  var page = 1;
+  if (params.has("page")) {
+    page = params.get("page");
+  }
+  $("#searchItem").keyup(function (e) {
+    e.preventDefault();
+    var search = $(this).val().trim(); //== var input = $('#searchInput').val().trim()
+    if (search == "" || search == null) {
+      $.ajax({
+        type: "get",
+        url: url + "getSearchProducts",
+        data: {
+          apitoken: localStorage.getItem("token"),
+          name: search,
+        },
+        dataType: "JSON",
+        success: function (res) {
+          if (res.check == true) {
+            var products = res.result.data;
+            if (products.length > 0) {
+              var str = ``;
+              products.forEach((el) => {
+                str +=
+                  `
+                    <div class="col-md-4 mb-3">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="`+(img +
+                  el.image) +
+                  `"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">` +
+                  el.name +
+                  `</h5>
+                    <p class="card-text">
+                      Giá: ` +
+                  Intl.NumberFormat("en-US").format(el.price) +
+                  `
+                    </p>
+                    <p>Loại sản phẩm:` +
+                  el.catename +
+                  ` </p>
+                    <p>Tên thương hiệu:` +
+                  el.brandname +
+                  ` </p>
+                    <a href="#" class="btn btn-success addToCartBtn" data-id="` +
+                  el.id +
+                  `">Mua</a>
+                    <a href="detail.html?id=` +
+                    el.id +
+                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `">Chi tiết</a>
+                  </div>
+                </div>
+              </div>`;
+              });
+              $("#resultProducts").html(str);
+              $('#paginationlist').show();
+              addToCart()
+            }
+          }
+        },
+      });
+    } else {
+      $.ajax({
+        type: "get",
+        url: url + "getSearchProducts",
+        data: {
+          apitoken: localStorage.getItem("token"),
+          name: search,
+        },
+        dataType: "JSON",
+        success: function (res) {
+          if (res.check == true) {
+            var products = res.result;
+            if (products.length > 0) {
+              var str = ``;
+              products.forEach((el) => {
+                str +=
+                  `
+                    <div class="col-md-4 mb-3">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="`+(img +
+                  el.image) +
+                  `"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">` +
+                  el.name +
+                  `</h5>
+                    <p class="card-text">
+                      Giá: ` +
+                  Intl.NumberFormat("en-US").format(el.price) +
+                  `
+                    </p>
+                    <p>Loại sản phẩm:` +
+                  el.catename +
+                  ` </p>
+                    <p>Tên thương hiệu:` +
+                  el.brandname +
+                  ` </p>
+                    <a href="#" class="btn btn-success addToCartBtn" data-id="` +
+                  el.id +
+                  `">Mua</a>
+                    <a href="detail.html?id=` +
+                    el.id +
+                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `">Chi tiết</a>
+                  </div>
+                </div>
+              </div>`;
+              });
+              $("#resultProducts").html(str);
+              $('#paginationlist').hide();
+              addToCart()
+            }
+          }
+        },
+      });
+    }
+  });
 }

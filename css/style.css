@@ -43,8 +43,6 @@ thead>tr>th {
     text-align: center;
 }
 
-
-
 #content>table {
     border: solid 1px black;
 }
@@ -188,11 +186,11 @@ table tr td {
         text-align: center;
     }
     .card-title {
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 700;
     }
     .card-text {
-        font-size: 18px;
+        font-size: 15px;
     }
     .mainCard{
         width: 100% !important;
@@ -201,9 +199,6 @@ table tr td {
         display: grid;
         grid-template-columns: 50% 50%;
         justify-content: space-around;
-    }
-    .card-title{
-        font-size: 18px;
     }
 }
 @media screen and (min-width: 300px) and (max-width:600px){
@@ -230,6 +225,6 @@ table tr td {
         bottom: 0;
     }
     .card-title{
-        font-size: 20px;
+        font-size: 17px;
     }
 }
