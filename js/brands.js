@@ -207,7 +207,7 @@ function searchPrice(id) {
                       <p class="card-text">Giá: ` +
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</p>
-                      <a "detail.html?id=` +
+                      <a href="detail.html?id=` +
                 el.id +
                 `" class="btn btn-primary chitietBtn" data-id="` +
                 el.id +
@@ -220,6 +220,7 @@ function searchPrice(id) {
                   </div>`;
             });
             $("#resultProducts").html(str);
+            addToCart();
           }
         },
       });
@@ -253,7 +254,7 @@ function searchPrice(id) {
                       <p class="card-text">Giá: ` +
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</p>
-                      <a "detail.html?id=` +
+                      <a href="detail.html?id=` +
                 el.id +
                 `" class="btn btn-primary chitietBtn" data-id="` +
                 el.id +
@@ -266,6 +267,7 @@ function searchPrice(id) {
                   </div>`;
             });
             $("#resultProducts").html(str);
+            addToCart();
           }
         },
       });
@@ -298,7 +300,7 @@ function searchPrice(id) {
                       <p class="card-text">Giá: ` +
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</p>
-                      <a "detail.html?id=` +
+                      <a href="detail.html?id=` +
                 el.id +
                 `" class="btn btn-primary chitietBtn" data-id="` +
                 el.id +
@@ -311,6 +313,7 @@ function searchPrice(id) {
                   </div>`;
             });
             $("#resultProducts").html(str);
+            addToCart();
           }
         },
       });

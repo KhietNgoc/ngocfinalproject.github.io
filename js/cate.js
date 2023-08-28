@@ -220,6 +220,7 @@ function searchPrice() {
                 </div>`;
             });
             $("#resultProducts").html(str)
+            addToCart();
           }
         },
       });
@@ -264,6 +265,7 @@ function searchPrice() {
                 </div>`;
             });
             $("#resultProducts").html(str)
+            addToCart();
           }
         },
       });
@@ -296,7 +298,7 @@ function searchPrice() {
                     <p class="card-text">Giá: ` +
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</p>
-                    <a "detail.html?id=`+el.id+`" class="btn btn-primary chitietBtn" data-id="` +
+                    <a href="detail.html?id=`+el.id+`" class="btn btn-primary chitietBtn" data-id="` +
                     el.id +
                     `">Chi tiet</a>
                     <a href="#" class="btn btn-success addToCartBtn" data-id="` +
@@ -307,6 +309,7 @@ function searchPrice() {
                 </div>`;
             });
             $("#resultProducts").html(str)
+            addToCart();
           }
         },
       });
