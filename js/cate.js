@@ -6,6 +6,7 @@ $(document).ready(function () {
 const url = "https://students.trungthanhweb.com/api/";
 const img = "https://students.trungthanhweb.com/images/";
 const params = new URLSearchParams(window.location.search);
+
 //=========global constant=========
 const Toast = Swal.mixin({
   toast: true,

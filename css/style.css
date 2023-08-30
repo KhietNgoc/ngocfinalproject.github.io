@@ -145,8 +145,7 @@ table tr td {
         bottom: 0;
     }
     .container, .container-xl,.detail_container {
-        min-height: 600px;
-        padding-bottom: 25%;
+        min-height: 900px;
     }
     .footerName {
         text-align: center;
