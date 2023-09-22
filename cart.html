@@ -11,43 +11,6 @@
     <title>Cart</title>
   </head>
   <body>
-    <!----------------------Modal---------------------->
-    <div
-      class="modal fade"
-      id="LoginModal"
-      tabindex="-1"
-      aria-labelledby="LoginModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="LoginModalLabel">Login</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input type="text" class="form-control" id="email" />
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary" id="subloginBtn">
-              Login
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
     <!--------------------- Modal --------------------->
     <div
       class="modal fade"
@@ -88,11 +51,7 @@
             />
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="modalPayBtn"
-            >
+            <button type="button" class="btn btn-primary" id="modalPayBtn">
               Okay
             </button>
             <button
@@ -201,7 +160,9 @@
         </table>
         <div class="row">
           <div class="col-md-3" style="margin: 0px auto">
-            <button class="btn btn-primary w-100" id="payBtn">Thanh toán</button>
+            <button class="btn btn-primary w-100" id="payBtn">
+              Thanh toán
+            </button>
           </div>
         </div>
       </div>
@@ -222,6 +183,32 @@
             <button class="btn btn-primary w-100 mb-4" id="payBtnMobile">
               Thanh toán
             </button>
+          </div>
+        </div>
+      </div>
+      <!-----------------------empty space---------------->
+      <div
+        class="border border-light-subtle bg-white m-5 empty"
+        style="border-radius: 10px"
+      >
+        <div
+          class="container"
+          style="
+            min-height: fit-content !important;
+            padding-bottom: 0 !important;
+          "
+        >
+          <div class="row py-5">
+            <div class="col py-5 text-center text-body-tertiary">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/11329/11329060.png"
+                alt=""
+              />
+              <p>Cart is empty</p>
+              <a href="/index.html" style="text-decoration: none">
+                <button class="btn btn-primary">Add more products?</button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -264,6 +251,7 @@
         </div>
       </footer>
     </div>
+
     <!------------------Javascript----------------------->
     <script src="js/cart.js"></script>
   </body>

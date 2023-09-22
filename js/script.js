@@ -78,9 +78,9 @@ function logout() {
   if (!localStorage.getItem("token") && localStorage.getItem("token") == null) {
     $("#showMoreBtn").hide();
     $("#logoutBtn").hide();
-    $('.footer').hide();
-    $('#cartNoti').hide();
-    $('.cartIcon').hide()
+    $(".footer").hide();
+    $("#cartNoti").hide();
+    $(".cart").hide();
   } else {
     $("#logoutBtn").click(function (e) {
       e.preventDefault();
@@ -180,14 +180,15 @@ function showMore() {
             <p>Tên thương hiệu:` +
             el.brandname +
             ` </p>
+            <a href="detail.html?id=` +
+            el.id +
+            `" class="btn btn-primary chitietBtn" data-id="` +
+            el.id +
+            `">Chi tiết</a>
             <button class="btn btn-success addToCartBtn" data-id="` +
             el.id +
             `">Mua</button>
-            <a href="detail.html?id=` +
-            el.id +
-            `" class="btn btn-success chitietBtn" data-id="` +
-            el.id +
-            `">Chi tiết</a>
+            
           </div>
         </div>
       </div>`;
@@ -205,12 +206,15 @@ function showMore() {
 }
 //================================
 function addToCart() {
-  var count = 0
-  var count2 = 0
-  if (localStorage.getItem("cart") == '' || localStorage.getItem("cart") == null) {
+  var count = 0;
+  var count2 = 0;
+  if (
+    localStorage.getItem("cart") == "" ||
+    localStorage.getItem("cart") == null
+  ) {
     var arr = [];
-    $('#cartNoti').hide();
-    $('#cart').click(function (e) { 
+    $("#cartNoti").hide();
+    $("#cart").click(function (e) {
       e.preventDefault();
       Toast.fire({
         icon: "warning",
@@ -221,12 +225,12 @@ function addToCart() {
     var cart = localStorage.getItem("cart");
     console.log(cart);
     var arr = JSON.parse(cart);
-    count= arr.length;
-    $('#cartNoti').html(Number(count));
-    $('#cartNoti').show();
-    $('#cart').click(function (e) { 
+    count = arr.length;
+    $("#cartNoti").html(Number(count));
+    $("#cartNoti").show();
+    $("#cart").click(function (e) {
       e.preventDefault();
-      window.location.replace('cart.html');
+      window.location.replace("cart.html");
     });
   }
   $(".addToCartBtn").click(function (e) {
@@ -245,14 +249,12 @@ function addToCart() {
       arr.push(item);
     }
     count2 = arr.length;
-    $('#cartNoti').html(count2);
-    $('#cartNoti').show();
+    $("#cartNoti").html(count2);
+    $("#cartNoti").show();
     localStorage.setItem("cart", JSON.stringify(arr));
     Toast.fire({
       icon: "success",
       title: "Đã thêm hàng thành công",
-    }).then(() => {
-      window.location.reload();
     });
   });
 }
@@ -281,8 +283,8 @@ function searchItem() {
                     <div class="col-md-3 mb-3">
                 <div class="card" style="width: 100%">
                   <img
-                    src="`+(img +
-                  el.image) +
+                    src="` +
+                  (img + el.image) +
                   `"
                     class="card-img-top"
                     alt="..."
@@ -306,8 +308,8 @@ function searchItem() {
                   el.id +
                   `">Mua</a>
                     <a href="detail.html?id=` +
-                    el.id +
-                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `" class="btn btn-success" data-id="` +
                   el.id +
                   `">Chi tiết</a>
                   </div>
@@ -315,8 +317,8 @@ function searchItem() {
               </div>`;
               });
               $("#row_products").html(str);
-              $("#showMoreBtn").show()
-              addToCart()
+              $("#showMoreBtn").show();
+              addToCart();
             }
           }
         },
@@ -341,8 +343,8 @@ function searchItem() {
                     <div class="col-md-3 mb-3">
                 <div class="card" style="width: 100%">
                   <img
-                    src="`+(img +
-                  el.image) +
+                    src="` +
+                  (img + el.image) +
                   `"
                     class="card-img-top"
                     alt="..."
@@ -366,8 +368,8 @@ function searchItem() {
                   el.id +
                   `">Mua</a>
                     <a href="detail.html?id=` +
-                    el.id +
-                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `" class="btn btn-success" data-id="` +
                   el.id +
                   `">Chi tiết</a>
                   </div>
@@ -375,8 +377,8 @@ function searchItem() {
               </div>`;
               });
               $("#row_products").html(str);
-              $("#showMoreBtn").hide()
-              addToCart()
+              $("#showMoreBtn").hide();
+              addToCart();
             }
           }
         },

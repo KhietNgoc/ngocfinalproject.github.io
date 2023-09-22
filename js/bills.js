@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  login();
+  checkLogin();
   loadData();
   logout();
 });
@@ -20,57 +20,72 @@ const Toast = Swal.mixin({
   },
 });
 //================================
-function login() {
-  if (localStorage.getItem("token") && localStorage.getItem("token") != null) {
-    $("#loginBtn").hide();
+// function login() {
+//   if (localStorage.getItem("token") && localStorage.getItem("token") != null) {
+//     $("#loginBtn").hide();
+//   } else {
+//     $("#loginBtn").click(function (e) {
+//       e.preventDefault();
+//       $("#LoginModal").modal("show");
+//       $("#subloginBtn").click(function (e) {
+//         e.preventDefault();
+//         var emailuser = $("#email").val().trim();
+//         if (emailuser == "") {
+//           Toast.fire({
+//             icon: "error",
+//             title: "Chưa nhập tài khoản email",
+//           }).then(() => {
+//             window.location.reload();
+//             //call back
+//           });
+//         } else {
+//           $.ajax({
+//             type: "post",
+//             url: "https://students.trungthanhweb.com/api/checkLoginhtml",
+//             data: {
+//               //name : gia tri
+//               email: emailuser,
+//             },
+//             dataType: "JSON",
+//             success: function (res) {
+//               if (res.check == true) {
+//                 localStorage.setItem("token", res.apitoken);
+//                 Toast.fire({
+//                   icon: "success",
+//                   title: "Đăng nhập thành công",
+//                 }).then(() => {
+//                   window.location.reload();
+//                   //call back
+//                 });
+//               } else {
+//                 Toast.fire({
+//                   icon: "error",
+//                   title: "Đăng nhập không thành công",
+//                 }).then(() => {
+//                   window.location.reload();
+//                   //call back
+//                 });
+//               }
+//             },
+//           });
+//         }
+//       });
+//     });
+//   }
+// }
+function checkLogin() {
+  if (!localStorage.getItem("token") || localStorage.getItem("token") == null) {
+    window.location.replace("index.html");
   } else {
-    $("#loginBtn").click(function (e) {
-      e.preventDefault();
-      $("#LoginModal").modal("show");
-      $("#subloginBtn").click(function (e) {
-        e.preventDefault();
-        var emailuser = $("#email").val().trim();
-        if (emailuser == "") {
-          Toast.fire({
-            icon: "error",
-            title: "Chưa nhập tài khoản email",
-          }).then(() => {
-            window.location.reload();
-            //call back
-          });
-        } else {
-          $.ajax({
-            type: "post",
-            url: "https://students.trungthanhweb.com/api/checkLoginhtml",
-            data: {
-              //name : gia tri
-              email: emailuser,
-            },
-            dataType: "JSON",
-            success: function (res) {
-              if (res.check == true) {
-                localStorage.setItem("token", res.apitoken);
-                Toast.fire({
-                  icon: "success",
-                  title: "Đăng nhập thành công",
-                }).then(() => {
-                  window.location.reload();
-                  //call back
-                });
-              } else {
-                Toast.fire({
-                  icon: "error",
-                  title: "Đăng nhập không thành công",
-                }).then(() => {
-                  window.location.reload();
-                  //call back
-                });
-              }
-            },
-          });
-        }
-      });
-    });
+    $("#loginBtn").hide();
+  }
+  if (!localStorage.getItem("cart") || localStorage.getItem("cart") == null) {
+    $("#cartNoti").hide();
+  } else {
+    var arr = JSON.parse(localStorage.getItem("cart"));
+    var count2 = arr.length;
+    $("#cartNoti").html(count2);
+    $("#cartNoti").show();
   }
 }
 //================================
@@ -78,7 +93,7 @@ function logout() {
   if (!localStorage.getItem("token") && localStorage.getItem("token") == null) {
     $("#showMoreBtn").hide();
     $("#logoutBtn").hide();
-    window.location.replace('index.html');
+    window.location.replace("index.html");
   } else {
     $("#logoutBtn").click(function (e) {
       e.preventDefault();
@@ -168,9 +183,9 @@ function loadData() {
           $("#billResult").show();
           $("#billResultMobile").show();
           billDetail();
-          billDetailMobile()
-        }else{
-          window.location.replace('index.html')
+          billDetailMobile();
+        } else {
+          window.location.replace("index.html");
         }
       },
     });
@@ -314,7 +329,8 @@ function billDetailMobile() {
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</li>
                 <li class="list-group-item"><b>Giảm giá:</b> ` +
-                el.discount +'%'+
+                el.discount +
+                "%" +
                 `</li>
                 <li class="list-group-item"><b>Số lượng:</b> ` +
                 el.qty +
@@ -344,7 +360,8 @@ function billDetailMobile() {
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</li>
                   <li class="list-group-item"><b>Giảm giá: </b> ` +
-                el.discount+'%' +
+                el.discount +
+                "%" +
                 `</li>
                   <li class="list-group-item"><b>Số lượng: </b> ` +
                 el.qty +
@@ -364,7 +381,7 @@ function billDetailMobile() {
                 <td colspan='2' scope='row' style='text-align: center'>Tổng tiền</td>
                 <td scope = 'row'>` +
             Intl.NumberFormat("en-US").format(sum) +
-              `</td>
+            `</td>
               </tr>
                 `;
           $("#resultDetailMobile").html(str);

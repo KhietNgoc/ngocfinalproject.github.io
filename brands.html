@@ -9,6 +9,7 @@
     <script src="js/bootstrap5.1.js"></script>
     <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
     <script src="js/sweetalert2.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>Brands</title>
   </head>
   <body>
@@ -70,11 +71,20 @@
           </ul>
           <div class="d-flex">
             <a href="cart.html?" style="text-decoration: none">
-              <img
-                src="img/shopping-cart-svgrepo-com.svg"
-                alt=""
-                class="cartIcon"
-              />
+              <div class="cart">
+                <box-icon
+                  name="cart-alt"
+                  type="solid"
+                  color="#fffafa"
+                  style="
+                    margin-top: 10px;
+                    width: 30px;
+                    height: auto;
+                    margin-right: 10px;
+                  "
+                ></box-icon>
+                <div class="iconCart" id="cartNoti"></div>
+              </div>
               <div class="iconCart" id="cartNoti"></div>
             </a>
             <input
@@ -117,7 +127,10 @@
                 />
               </div>
               <div class="col-md">
-                <button class="btn btn-outline-success w-100" id="searchPriceBtn">
+                <button
+                  class="btn btn-outline-success w-100"
+                  id="searchPriceBtn"
+                >
                   Tìm kiếm
                 </button>
               </div>

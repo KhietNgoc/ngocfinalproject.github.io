@@ -11,6 +11,7 @@
     <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
     <script src="js/sweetalert2.js"></script>
     <script src="js/owl.carousel.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>Chi tiết sản phẩm</title>
   </head>
   <body>
@@ -111,9 +112,21 @@
             </li>
           </ul>
           <div class="d-flex">
-            <a href="cart.html?" style="text-decoration: none;">
-              <img src="img/shopping-cart-svgrepo-com.svg" alt="" class="cartIcon">
-              <div class="iconCart" id="cartNoti"></div>
+            <a href="/cart.html" style="text-decoration: none">
+              <div class="cart">
+                <box-icon
+                  name="cart-alt"
+                  type="solid"
+                  color="#fffafa"
+                  style="
+                    margin-top: 10px;
+                    width: 30px;
+                    height: auto;
+                    margin-right: 10px;
+                  "
+                ></box-icon>
+                <div class="iconCart" id="cartNoti"></div>
+              </div>
             </a>
             <input
               class="form-control me-2 bg-light"
@@ -123,9 +136,6 @@
               id="searchItem"
               disabled
             />
-            <!--<button class="btn btn-outline-success bg-light" type="submit">
-              Search
-            </button>-->
           </div>
         </div>
       </div>
@@ -148,23 +158,23 @@
                 <table class="table table-success table-striped mt-3">
                     <tbody>
                       <tr>
-                        <td>Tên sản phẩm</td>
+                        <td><b>Tên sản phẩm</b></td>
                         <td><span id="productName"></span></td>
                       </tr>
                       <tr>
-                        <td>Giảm giá</td>
+                        <td><b>Giảm giá</b></td>
                         <td><span id="discount"></span</td>
                       </tr>
                       <tr>
-                        <td>Giá</td>
+                        <td><b>Giá</b></td>
                         <td><span id="price"></span</td>
                       </tr>
                       <tr>
-                        <td>Loại sản phẩm</td>
+                        <td><b>Loại sản phẩm</b></td>
                         <td><span id="cateName"></span</td>
                       </tr>
                       <tr>
-                        <td>Thương hiệu</td>
+                        <td><b>Thương hiệu</b></td>
                         <td><span id="brandName"></span</td>
                       </tr>
                     </tbody>
@@ -182,7 +192,7 @@
             </div>
         </div>
         <div class="row">
-          <div class="col-md-7 content" id="content"></div>
+          <div class="col-md-7 content justify-content-center" id="content"></div>
           <div class="row w-100 mt-4">
             <button id="seeMore" class="btn btn-primary w-100" style="max-width: 100px !important;">Xem thêm</button>
           </div>
@@ -231,8 +241,7 @@
         </div>
       </div>
     </footer>
-  </div>
+    </div>
     <script src="js/detail.js"></script>
-    
   </body>
 </html>

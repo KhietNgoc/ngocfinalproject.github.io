@@ -12,14 +12,17 @@ h1 {
     width: fit-content;
     margin: 0 auto;
 }
-.container1{
+
+.container1 {
     position: relative;
     min-height: 100%;
 }
+
 .container, .container-xl, .detail_container {
     min-height: 100%;
     padding-bottom: 35%;
 }
+
 .voucher {
     width: 70%;
     margin: 10px auto !important;
@@ -63,10 +66,6 @@ td {
     font-size: larger !important;
 }
 
-img,
-svg {
-    width: 100% !important;
-}
 
 #recommend {
     margin-left: 2%;
@@ -106,33 +105,44 @@ table tr td {
     height: 150px;
     width: auto;
 }
-.cartIcon {
-    width: 38px;
-    height: 38px;
-    margin-right: 10px;
-    margin-top: 2px;
-    filter:invert(1);
+
+.cart {
+    position: relative;
+
+    .iconCart {
+        background-color: red;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 11px;
+        color: white;
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        font-size: 13px;
+        text-decoration: none;
+    }
 }
-.iconCart {
-    background-color: red;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 15px;
-    color: white;
-    margin-top: -49px;
-    margin-left: 70%;
-    font-size: 13px;
-    text-decoration: none;
-  }
-  .mobile{
+
+.list {
+    max-height: 500px;
+    overflow: auto;
+}
+
+.list::-webkit-scrollbar {
     display: none;
 }
+
+.mobile {
+    display: none;
+}
+
 @media screen and (min-width: 1000px) {
-    .mobile{
+    .mobile {
         display: none;
     }
+
     footer {
         background-color: black;
         width: 100%;
@@ -144,13 +154,15 @@ table tr td {
         position: absolute;
         bottom: 0;
     }
-    .container, .container-xl,.detail_container {
+
+    .container, .container-xl, .detail_container {
         min-height: 900px;
     }
+
     .footerName {
         text-align: center;
     }
-    
+
     iframe {
         margin-top: 6%;
     }
@@ -160,13 +172,16 @@ table tr td {
     .desktop {
         display: none;
     }
+
     .mobile {
         display: block;
     }
-    .container, .container-xl,.detail_container {
+
+    .container, .container-xl, .detail_container {
         min-height: 1110px;
         padding-bottom: 50%;
     }
+
     footer {
         background-color: black;
         width: 100%;
@@ -176,6 +191,7 @@ table tr td {
         position: absolute;
         bottom: 0;
     }
+
     .rowFooter {
         display: grid !important;
         grid-template-columns: 100% !important;
@@ -184,36 +200,44 @@ table tr td {
         width: 90%;
         text-align: center;
     }
+
     .card-title {
         font-size: 15px;
         font-weight: 700;
     }
+
     .card-text {
         font-size: 15px;
     }
-    .mainCard{
+
+    .mainCard {
         width: 100% !important;
     }
-    #row_products{
+
+    #row_products {
         display: grid;
         grid-template-columns: 50% 50%;
         justify-content: space-around;
     }
 }
-@media screen and (min-width: 300px) and (max-width:600px){
-    .mainCard{
+
+@media screen and (min-width: 300px) and (max-width:600px) {
+    .mainCard {
         width: 100% !important;
     }
-    #row_products{
+
+    #row_products {
         display: grid;
         grid-template-columns: 100%;
         justify-content: space-around;
         margin: 0 auto;
     }
-    .container, .container-xl,.detail_container {
+
+    .container, .container-xl, .detail_container {
         min-height: 600px;
         padding-bottom: 100%;
     }
+
     footer {
         background-color: black;
         width: 100%;
@@ -223,7 +247,8 @@ table tr td {
         position: absolute;
         bottom: 0;
     }
-    .card-title{
+
+    .card-title {
         font-size: 17px;
     }
 }

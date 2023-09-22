@@ -106,7 +106,7 @@ function getData() {
               `
                 <div class="col-md-4 mt-3 mainCard">
                 <div class="card" style="width: 100%;">
-                <img style="width:300px; height: auto; margin: 0px auto;"src="` +
+                <img style="width:200px; height: auto; margin: 0px auto;"src="` +
               (img + el.image) +
               `" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -116,12 +116,14 @@ function getData() {
                   <p class="card-text">Giá: ` +
               Intl.NumberFormat("en-US").format(el.price) +
               `</p>
-                  <a href="detail.html?id=`+el.id+`" class="btn btn-primary" data-id="` +
-                  el.id +
-                  `">Chi tiết</a>
+                  <a href="detail.html?id=` +
+              el.id +
+              `" class="btn btn-primary" data-id="` +
+              el.id +
+              `">Chi tiết</a>
                   <a href="#" class="btn btn-success addToCartBtn" data-id="` +
-                  el.id +
-                  `">Mua</a>
+              el.id +
+              `">Mua</a>
                 </div>
               </div>
               </div>`;
@@ -157,7 +159,7 @@ function getData() {
         $("#searchPriceBtn").click(function (e) {
           e.preventDefault();
           searchPrice();
-          $('#paginationlist').hide();
+          $("#paginationlist").hide();
         });
         addToCart();
         searchItem();
@@ -210,17 +212,19 @@ function searchPrice() {
                     <p class="card-text">Giá: ` +
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</p>
-                    <a href="detail.html?id=`+el.id+`" class="btn btn-primary chitietBtn"  data-id="` +
-                    el.id +
-                    `">Chi tiet</a>
+                    <a href="detail.html?id=` +
+                el.id +
+                `" class="btn btn-primary chitietBtn"  data-id="` +
+                el.id +
+                `">Chi tiet</a>
                     <a href="#" class="btn btn-success addToCartBtn" data-id="` +
-                    el.id +
-                    `">Mua</a>
+                el.id +
+                `">Mua</a>
                   </div>
                 </div>
                 </div>`;
             });
-            $("#resultProducts").html(str)
+            $("#resultProducts").html(str);
             addToCart();
           }
         },
@@ -255,17 +259,19 @@ function searchPrice() {
                     <p class="card-text">Giá: ` +
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</p>
-                    <a href="detail.html?id=`+el.id+`" class="btn btn-primary chitietBtn" data-id="` +
-                    el.id +
-                    `">Chi tiet</a>
+                    <a href="detail.html?id=` +
+                el.id +
+                `" class="btn btn-primary chitietBtn" data-id="` +
+                el.id +
+                `">Chi tiet</a>
                     <a href="#" class="btn btn-success addToCartBtn" data-id="` +
-                    el.id +
-                    `">Mua</a>
+                el.id +
+                `">Mua</a>
                   </div>
                 </div>
                 </div>`;
             });
-            $("#resultProducts").html(str)
+            $("#resultProducts").html(str);
             addToCart();
           }
         },
@@ -299,17 +305,19 @@ function searchPrice() {
                     <p class="card-text">Giá: ` +
                 Intl.NumberFormat("en-US").format(el.price) +
                 `</p>
-                    <a href="detail.html?id=`+el.id+`" class="btn btn-primary chitietBtn" data-id="` +
-                    el.id +
-                    `">Chi tiet</a>
+                    <a href="detail.html?id=` +
+                el.id +
+                `" class="btn btn-primary chitietBtn" data-id="` +
+                el.id +
+                `">Chi tiet</a>
                     <a href="#" class="btn btn-success addToCartBtn" data-id="` +
-                    el.id +
-                    `">Mua</a>
+                el.id +
+                `">Mua</a>
                   </div>
                 </div>
                 </div>`;
             });
-            $("#resultProducts").html(str)
+            $("#resultProducts").html(str);
             addToCart();
           }
         },
@@ -318,47 +326,49 @@ function searchPrice() {
     default:
       break;
   }
-  searchItem()
+  searchItem();
 }
 //----------------------------------------------
 function addToCart() {
-  var count = 0
-  var count2 = 0
-  if(localStorage.getItem('cart') == ''||localStorage.getItem('cart') == null){
-    var arr = []
-    $('#cartNoti').hide();
-  }else{
-    var cart = localStorage.getItem('cart');
-    var arr=JSON.parse(cart);
-    count= arr.length;
-    $('#cartNoti').html(Number(count));
-    $('#cartNoti').show();
+  var count = 0;
+  var count2 = 0;
+  if (
+    localStorage.getItem("cart") == "" ||
+    localStorage.getItem("cart") == null
+  ) {
+    var arr = [];
+    $("#cartNoti").hide();
+  } else {
+    var cart = localStorage.getItem("cart");
+    var arr = JSON.parse(cart);
+    count = arr.length;
+    $("#cartNoti").html(Number(count));
+    $("#cartNoti").show();
   }
   $(".addToCartBtn").click(function (e) {
     e.preventDefault();
-    var id = Number($(this).attr('data-id'));
+    var id = Number($(this).attr("data-id"));
     var quantity = 1;
-    var item = [id,quantity];
+    var item = [id, quantity];
     var check = false;
-    arr.forEach(el => {
-      if(el[0] == id){
-        el[1]+= 1;
-        check =true;
+    arr.forEach((el) => {
+      if (el[0] == id) {
+        el[1] += 1;
+        check = true;
       }
     });
-    if(check == false){
+    if (check == false) {
       arr.push(item);
     }
     count2 = arr.length;
-    $('#cartNoti').html(count2);
-    $('#cartNoti').show();
-    localStorage.setItem('cart',JSON.stringify(arr));
+    $("#cartNoti").html(count2);
+    $("#cartNoti").show();
+    localStorage.setItem("cart", JSON.stringify(arr));
     Toast.fire({
       icon: "success",
       title: "Đã thêm thành công",
-    })
+    });
   });
-  
 }
 //----------------------------------------------
 function searchItem() {
@@ -392,8 +402,8 @@ function searchItem() {
                     <div class="col-md-4 mb-3">
                 <div class="card" style="width: 100%">
                   <img
-                    src="`+(img +
-                  el.image) +
+                    src="` +
+                  (img + el.image) +
                   `"
                     class="card-img-top"
                     alt="..."
@@ -417,8 +427,8 @@ function searchItem() {
                   el.id +
                   `">Mua</a>
                     <a href="detail.html?id=` +
-                    el.id +
-                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `" class="btn btn-success" data-id="` +
                   el.id +
                   `">Chi tiết</a>
                   </div>
@@ -426,8 +436,8 @@ function searchItem() {
               </div>`;
               });
               $("#resultProducts").html(str);
-              $('#paginationlist').show();
-              addToCart()
+              $("#paginationlist").show();
+              addToCart();
             }
           }
         },
@@ -452,8 +462,8 @@ function searchItem() {
                     <div class="col-md-4 mb-3">
                 <div class="card" style="width: 100%">
                   <img
-                    src="`+(img +
-                  el.image) +
+                    src="` +
+                  (img + el.image) +
                   `"
                     class="card-img-top"
                     alt="..."
@@ -477,8 +487,8 @@ function searchItem() {
                   el.id +
                   `">Mua</a>
                     <a href="detail.html?id=` +
-                    el.id +
-                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `" class="btn btn-success" data-id="` +
                   el.id +
                   `">Chi tiết</a>
                   </div>
@@ -486,8 +496,8 @@ function searchItem() {
               </div>`;
               });
               $("#resultProducts").html(str);
-              $('#paginationlist').hide();
-              addToCart()
+              $("#paginationlist").hide();
+              addToCart();
             }
           }
         },

@@ -9,6 +9,7 @@
     <script src="js/bootstrap5.1.js"></script>
     <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
     <script src="js/sweetalert2.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   </head>
   <body>
     <!----------------------Modal---------------------->
@@ -31,7 +32,12 @@
             ></button>
           </div>
           <div class="modal-body">
-            <input type="text" class="form-control" id="email" />
+            <input
+              type="text"
+              class="form-control"
+              value="students@gmail.com"
+              id="email"
+            />
           </div>
           <div class="modal-footer">
             <button
@@ -108,14 +114,20 @@
             </li>
           </ul>
           <div class="d-flex">
-            <a href="#" style="text-decoration: none;">
-              <img
-                src="img/shopping-cart-svgrepo-com.svg"
-                alt=""
-                class="cartIcon"
-                id="cart"
-              />
-              <div class="iconCart" id="cartNoti">
+            <a href="/cart.html" style="text-decoration: none">
+              <div class="cart">
+                <box-icon
+                  name="cart-alt"
+                  type="solid"
+                  color="#fffafa"
+                  style="
+                    margin-top: 10px;
+                    width: 30px;
+                    height: auto;
+                    margin-right: 10px;
+                  "
+                ></box-icon>
+                <div class="iconCart" id="cartNoti"></div>
               </div>
             </a>
             <input
@@ -134,68 +146,68 @@
     </nav>
     <!----------------------Main---------------------->
     <div class="container1">
-    <img src="img/PC13.png" class="w-100" alt="avatar" />
-    <div class="row align-items-center voucher">
-      <div class="col-4">
-        <img src="img/Bonus banner-16.png" class="w-100" />
+      <img src="img/PC13.png" class="w-100" alt="avatar" />
+      <div class="row align-items-center voucher">
+        <div class="col-4">
+          <img src="img/Bonus banner-16.png" class="w-100" />
+        </div>
+        <div class="col-4">
+          <img src="img/Bonus banner-26.png" class="w-100" />
+        </div>
+        <div class="col-4">
+          <img src="img/Bonus banner-36.png" class="w-100" />
+        </div>
       </div>
-      <div class="col-4">
-        <img src="img/Bonus banner-26.png" class="w-100" />
+      <div class="container px-4 mt-3 container-sm">
+        <div class="row w-100" id="row_products"></div>
+        <div class="row w-100">
+          <button
+            type="button"
+            class="btn btn-primary w-50"
+            style="margin: 10px auto"
+            id="showMoreBtn"
+          >
+            Xem thêm
+          </button>
+        </div>
       </div>
-      <div class="col-4">
-        <img src="img/Bonus banner-36.png" class="w-100" />
-      </div>
+      <footer class="footer desktop">
+        <div class="row">
+          <div class="col-md-8 footerName">
+            <span>@Đinh Khiết Ngọc</span>
+          </div>
+          <div class="col-md footerMap">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.272927053988!2d106.67567107417293!3d10.790396258937673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e2a448ef3%3A0x787e1a8527eeb64d!2zSOG6u20gU3RvcmUgLSAxNDBBIFRy4bqnbiBRdWFuZyBEaeG7h3UsIFAxNCwgUTM!5e0!3m2!1svi!2s!4v1692928084030!5m2!1svi!2s"
+              width="300"
+              height="200"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </footer>
+      <footer class="footer mobile">
+        <div class="rowFooter mt-4">
+          <div class="col mt-2">
+            <span>@Đinh Khiết Ngọc</span>
+          </div>
+          <div class="col mt-2">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.272927053988!2d106.67567107417293!3d10.790396258937673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e2a448ef3%3A0x787e1a8527eeb64d!2zSOG6u20gU3RvcmUgLSAxNDBBIFRy4bqnbiBRdWFuZyBEaeG7h3UsIFAxNCwgUTM!5e0!3m2!1svi!2s!4v1692928084030!5m2!1svi!2s"
+              width="300"
+              height="200"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </footer>
     </div>
-    <div class="container px-4 mt-3 container-sm">
-      <div class="row w-100" id="row_products"></div>
-      <div class="row w-100">
-        <button
-          type="button"
-          class="btn btn-primary w-50"
-          style="margin: 10px auto"
-          id="showMoreBtn"
-        >
-          Xem thêm
-        </button>
-    </div>
-    </div>
-    <footer class="footer desktop">
-      <div class="row">
-        <div class="col-md-8 footerName">
-          <span>@Đinh Khiết Ngọc</span>
-        </div>
-        <div class="col-md footerMap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.272927053988!2d106.67567107417293!3d10.790396258937673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e2a448ef3%3A0x787e1a8527eeb64d!2zSOG6u20gU3RvcmUgLSAxNDBBIFRy4bqnbiBRdWFuZyBEaeG7h3UsIFAxNCwgUTM!5e0!3m2!1svi!2s!4v1692928084030!5m2!1svi!2s"
-            width="300"
-            height="200"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-    </footer>
-    <footer class="footer mobile">
-      <div class="rowFooter mt-4">
-        <div class="col mt-2">
-          <span>@Đinh Khiết Ngọc</span>
-        </div>
-        <div class="col mt-2">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.272927053988!2d106.67567107417293!3d10.790396258937673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294e2a448ef3%3A0x787e1a8527eeb64d!2zSOG6u20gU3RvcmUgLSAxNDBBIFRy4bqnbiBRdWFuZyBEaeG7h3UsIFAxNCwgUTM!5e0!3m2!1svi!2s!4v1692928084030!5m2!1svi!2s"
-            width="300"
-            height="200"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-    </footer>
-  </div>
     <script src="js/script.js"></script>
   </body>
 </html>

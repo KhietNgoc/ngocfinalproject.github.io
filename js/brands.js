@@ -105,7 +105,7 @@ function getData() {
               `
                   <div class="col-md-4 mt-3 mainCard">
                   <div class="card" style="width: 100%;">
-                  <img style="width:300px; height: auto; margin: 0px auto;"src="` +
+                  <img style="width:200px; height: auto; margin: 0px auto;"src="` +
               (img + el.image) +
               `" class="card-img-top" alt="...">
                   <div class="card-body">
@@ -161,7 +161,7 @@ function getData() {
           $("#paginationlist").hide();
         });
         addToCart();
-        searchItem()
+        searchItem();
       }
     },
   });
@@ -326,15 +326,18 @@ function searchPrice(id) {
 function addToCart() {
   var count = 0;
   var count2 = 0;
-  if (localStorage.getItem("cart") == ''|| localStorage.getItem("cart") == null) {
+  if (
+    localStorage.getItem("cart") == "" ||
+    localStorage.getItem("cart") == null
+  ) {
     var arr = [];
-    $('#cartNoti').hide();
+    $("#cartNoti").hide();
   } else {
     var cart = localStorage.getItem("cart");
     var arr = JSON.parse(cart);
-    count= arr.length;
-    $('#cartNoti').html(Number(count));
-    $('#cartNoti').show();
+    count = arr.length;
+    $("#cartNoti").html(Number(count));
+    $("#cartNoti").show();
   }
   $(".addToCartBtn").click(function (e) {
     e.preventDefault();
@@ -352,8 +355,8 @@ function addToCart() {
       arr.push(item);
     }
     count2 = arr.length;
-    $('#cartNoti').html(count2);
-    $('#cartNoti').show();
+    $("#cartNoti").html(count2);
+    $("#cartNoti").show();
     localStorage.setItem("cart", JSON.stringify(arr));
     Toast.fire({
       icon: "success",
@@ -393,8 +396,8 @@ function searchItem() {
                     <div class="col-md-4 mb-3">
                 <div class="card" style="width: 100%">
                   <img
-                    src="`+(img +
-                  el.image) +
+                    src="` +
+                  (img + el.image) +
                   `"
                     class="card-img-top"
                     alt="..."
@@ -418,8 +421,8 @@ function searchItem() {
                   el.id +
                   `">Mua</a>
                     <a href="detail.html?id=` +
-                    el.id +
-                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `" class="btn btn-success" data-id="` +
                   el.id +
                   `">Chi tiết</a>
                   </div>
@@ -427,8 +430,8 @@ function searchItem() {
               </div>`;
               });
               $("#resultProducts").html(str);
-              $('#paginationlist').show();
-              addToCart()
+              $("#paginationlist").show();
+              addToCart();
             }
           }
         },
@@ -453,8 +456,8 @@ function searchItem() {
                     <div class="col-md-4 mb-3">
                 <div class="card" style="width: 100%">
                   <img
-                    src="`+(img +
-                  el.image) +
+                    src="` +
+                  (img + el.image) +
                   `"
                     class="card-img-top"
                     alt="..."
@@ -478,8 +481,8 @@ function searchItem() {
                   el.id +
                   `">Mua</a>
                     <a href="detail.html?id=` +
-                    el.id +
-                    `" class="btn btn-success" data-id="` +
+                  el.id +
+                  `" class="btn btn-success" data-id="` +
                   el.id +
                   `">Chi tiết</a>
                   </div>
@@ -487,8 +490,8 @@ function searchItem() {
               </div>`;
               });
               $("#resultProducts").html(str);
-              $('#paginationlist').hide();
-              addToCart()
+              $("#paginationlist").hide();
+              addToCart();
             }
           }
         },

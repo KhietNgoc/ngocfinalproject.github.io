@@ -1,9 +1,9 @@
 $(document).ready(function () {
-  login();
+  // login();
+  checkLogin();
   logout();
   loadCart();
   loadCartMobile();
-  
 });
 const url = "https://students.trungthanhweb.com/api/";
 var link = url + "home";
@@ -20,65 +20,71 @@ const Toast = Swal.mixin({
   },
 });
 //================================
-function login() {
-  if (localStorage.getItem("token") && localStorage.getItem("token") != null) {
-    $("#loginBtn").hide();
+// function login() {
+//   if (localStorage.getItem("token") && localStorage.getItem("token") != null) {
+//     $("#loginBtn").hide();
+//   } else {
+//     $("#loginBtn").click(function (e) {
+//       e.preventDefault();
+//       $("#LoginModal").modal("show");
+//       $("#subloginBtn").click(function (e) {
+//         e.preventDefault();
+//         var emailuser = $("#email").val().trim();
+//         if (emailuser == "") {
+//           Toast.fire({
+//             icon: "error",
+//             title: "Chưa nhập tài khoản email",
+//           }).then(() => {
+//             window.location.reload();
+//             //call back
+//           });
+//         } else {
+//           $.ajax({
+//             type: "post",
+//             url: "https://students.trungthanhweb.com/api/checkLoginhtml",
+//             data: {
+//               //name : gia tri
+//               email: emailuser,
+//             },
+//             dataType: "JSON",
+//             success: function (res) {
+//               if (res.check == true) {
+//                 localStorage.setItem("token", res.apitoken);
+//                 Toast.fire({
+//                   icon: "success",
+//                   title: "Đăng nhập thành công",
+//                 }).then(() => {
+//                   window.location.reload();
+//                   //call back
+//                 });
+//               } else {
+//                 Toast.fire({
+//                   icon: "error",
+//                   title: "Đăng nhập không thành công",
+//                 }).then(() => {
+//                   window.location.reload();
+//                   //call back
+//                 });
+//               }
+//             },
+//           });
+//         }
+//       });
+//     });
+//   }
+// }
+function checkLogin() {
+  if (!localStorage.getItem("token") || localStorage.getItem("token") == null) {
+    window.location.replace("index.html");
   } else {
-    $("#loginBtn").click(function (e) {
-      e.preventDefault();
-      $("#LoginModal").modal("show");
-      $("#subloginBtn").click(function (e) {
-        e.preventDefault();
-        var emailuser = $("#email").val().trim();
-        if (emailuser == "") {
-          Toast.fire({
-            icon: "error",
-            title: "Chưa nhập tài khoản email",
-          }).then(() => {
-            window.location.reload();
-            //call back
-          });
-        } else {
-          $.ajax({
-            type: "post",
-            url: "https://students.trungthanhweb.com/api/checkLoginhtml",
-            data: {
-              //name : gia tri
-              email: emailuser,
-            },
-            dataType: "JSON",
-            success: function (res) {
-              if (res.check == true) {
-                localStorage.setItem("token", res.apitoken);
-                Toast.fire({
-                  icon: "success",
-                  title: "Đăng nhập thành công",
-                }).then(() => {
-                  window.location.reload();
-                  //call back
-                });
-              } else {
-                Toast.fire({
-                  icon: "error",
-                  title: "Đăng nhập không thành công",
-                }).then(() => {
-                  window.location.reload();
-                  //call back
-                });
-              }
-            },
-          });
-        }
-      });
-    });
+    $("#loginBtn").hide();
   }
 }
 //================================
 function logout() {
   if (!localStorage.getItem("token") && localStorage.getItem("token") == null) {
     $("#logoutBtn").hide();
-    $("#cartTable").hide();
-    $('#cartTableMobile').hide()
+    $(".container1").hide();
   } else {
     $("#logoutBtn").click(function (e) {
       e.preventDefault();
@@ -100,14 +106,14 @@ function logout() {
 //================================
 function loadCart() {
   if (localStorage.getItem("cart") && localStorage.getItem("cart") != null) {
+    $(".empty").hide();
     var cart = localStorage.getItem("cart");
-    var id = JSON.parse(cart);
     $.ajax({
       type: "get",
       url: url + "getCart",
       data: {
         apitoken: localStorage.getItem("token"),
-        id: id,
+        id: cart,
       },
       dataType: "JSON",
       success: function (res) {
@@ -119,8 +125,8 @@ function loadCart() {
             str +=
               `
                 <li><a class="dropdown-item" href="brands.html?id=` +
-                el.id +
-                `">` +
+              el.id +
+              `">` +
               el.name +
               `</a></li>
                 `;
@@ -160,7 +166,8 @@ function loadCart() {
                 el[1] +
                 `</td>
                 <td scope="row">` +
-                Number(el[2]) +'%'+
+                Number(el[2]) +
+                "%" +
                 `</td>
                     <td>` +
                 Intl.NumberFormat("en-US").format(el[5]) +
@@ -191,7 +198,8 @@ function loadCart() {
                 el[1] +
                 `</td>
                 <td scope="row">` +
-                Number(el[2])+ '%' +
+                Number(el[2]) +
+                "%" +
                 `</td>
                   <td>` +
                 Intl.NumberFormat("en-US").format(el[5]) +
@@ -229,20 +237,22 @@ function loadCart() {
       },
     });
   } else {
-    window.location.replace("index.html");
+    $(".mobile").hide();
+    $(".desktop").hide();
+    $(".empty").show();
   }
 }
 //================================
 function loadCartMobile() {
   if (localStorage.getItem("cart") && localStorage.getItem("cart") != null) {
+    $(".empty").hide();
     var cart = localStorage.getItem("cart");
-    var id = JSON.parse(cart);
     $.ajax({
       type: "get",
       url: url + "getCart",
       data: {
         apitoken: localStorage.getItem("token"),
-        id: id,
+        id: cart,
       },
       dataType: "JSON",
       success: function (res) {
@@ -256,7 +266,7 @@ function loadCartMobile() {
                 `
             <tr>
                 <td scope="row" style="vertical-align: middle;">` +
-                (++index) +
+                ++index +
                 `</td>
                 <td style="padding: 0;"><img src="` +
                 el[3] +
@@ -264,23 +274,26 @@ function loadCartMobile() {
                 <td>
                     <ul class="list-group" style="text-align: left;">
                         <li class="list-group-item"><b>Tên sản phẩm: </b> ` +
-                        el[1] +
-                        `</li>
+                el[1] +
+                `</li>
                         <li class="list-group-item"><b>Giảm giá: </b> ` +
-                        Number(el[2])+'%' +
-                        `</li>
+                Number(el[2]) +
+                "%" +
+                `</li>
                         <li class="list-group-item"><b>Đơn giá:</b> ` +
-                        Intl.NumberFormat("en-US").format(el[5]) +
-                        `</li>
+                Intl.NumberFormat("en-US").format(el[5]) +
+                `</li>
                         <li class="list-group-item"><b>Số lượng: </b><input type="number" class="form-control qtyInput" min="0" value="` +
-                        el[4] +
-                        `" data-id="` +
-                        el[0] +
-                        `"></li>
+                el[4] +
+                `" data-id="` +
+                el[0] +
+                `"></li>
                         <li class="list-group-item"><b>Thành tiền: </b> ` +
-                        Intl.NumberFormat("en-US").format(el[6]) +
-                        `</li>
-                        <li class="list-group-item "><button class='btn btn-danger dltBtn w-100' data-id='`+el[0]+`'>Xóa</button></li>
+                Intl.NumberFormat("en-US").format(el[6]) +
+                `</li>
+                        <li class="list-group-item "><button class='btn btn-danger dltBtn w-100' data-id='` +
+                el[0] +
+                `'>Xóa</button></li>
                     </ul>
                 </td>
             </tr>
@@ -299,23 +312,26 @@ function loadCartMobile() {
               <td>
                 <ul class="list-group" style="text-align: left;">
                   <li class="list-group-item"><b>Tên sản phẩm: </b>` +
-                el[1]+
+                el[1] +
                 `</li>
                 <li class="list-group-item"><b>Giảm giá: </b> ` +
-                        Number(el[2])+'%' +
-                        `</li>
+                Number(el[2]) +
+                "%" +
+                `</li>
                   <li class="list-group-item"><b>Đơn giá: </b>` +
                 Intl.NumberFormat("en-US").format(el[5]) +
                 `</li>
                   <li class="list-group-item"><b>Số lượng: </b> <input type="number" class="form-control qtyInput" min="0" value="` +
-                  el[4] +
-                  `" data-id="` +
-                  el[0] +
-                  `"></li>
+                el[4] +
+                `" data-id="` +
+                el[0] +
+                `"></li>
                 <li class="list-group-item"><b>Thành tiền: </b> ` +
                 Intl.NumberFormat("en-US").format(el[6]) +
                 `</li>
-                <li class="list-group-item "><button class='btn btn-danger dltBtn w-100' data-id='`+el[0]+`'>Xóa</button></li>
+                <li class="list-group-item "><button class='btn btn-danger dltBtn w-100' data-id='` +
+                el[0] +
+                `'>Xóa</button></li>
                 </ul>
               </td>
             </tr>`;
@@ -328,18 +344,21 @@ function loadCartMobile() {
                 <th colspan='2' scope='row' style='text-align: center'>Tổng tiền</td>
                 <td scope = 'row'>` +
             Intl.NumberFormat("en-US").format(sum) +
-                `</td>
+            `</td>
             </tr>
                 `;
-            $('#cartResultsMobile').html(str)
+          $("#cartResultsMobile").html(str);
         }
-        editQty()
-        paymentMobile()
-        deleteProducts()
+        editQty();
+        paymentMobile();
+        deleteProducts();
       },
     });
   } else {
-    window.location.replace("index.html");
+    $(".mobile").hide();
+    $(".desktop").hide();
+    $(".empty").show();
+    // window.location.replace("index.html");
   }
 }
 //================================
@@ -375,12 +394,12 @@ function editQty() {
             icon: "success",
             title: "Đã xóa thành công",
           }).then(() => {
-            loadCart()
+            loadCart();
             loadCartMobile();
           });
         } else if (result.isDenied) {
           loadCart();
-          loadCartMobile()
+          loadCartMobile();
         }
       });
     } else {
@@ -391,7 +410,7 @@ function editQty() {
       });
       localStorage.setItem("cart", JSON.stringify(cart));
       loadCart();
-      loadCartMobile()
+      loadCartMobile();
     }
   });
 }
@@ -518,10 +537,10 @@ function paymentMobile() {
   });
 }
 //================================
-function deleteProducts(){
-  $('.dltBtn').click(function (e) { 
+function deleteProducts() {
+  $(".dltBtn").click(function (e) {
     e.preventDefault();
-    var id = $(this).attr('data-id');
+    var id = $(this).attr("data-id");
     var cart = JSON.parse(localStorage.getItem("cart"));
     Swal.fire({
       icon: "question",
@@ -533,9 +552,9 @@ function deleteProducts(){
     }).then((result) => {
       // Read more about isConfirmed, isDenied below
       if (result.isConfirmed) {
-        var arr = []; 
+        var arr = [];
         cart.forEach((el) => {
-          if(el[0] != id){
+          if (el[0] != id) {
             arr.push(el);
           }
         });
@@ -548,13 +567,13 @@ function deleteProducts(){
           icon: "success",
           title: "Đã xóa thành công",
         }).then(() => {
-          loadCart()
-          loadCartMobile()
+          loadCart();
+          loadCartMobile();
         });
       } else if (result.isDenied) {
         loadCart();
-        loadCartMobile()
+        loadCartMobile();
       }
-    })
+    });
   });
 }
